@@ -9,6 +9,7 @@ class Clan(db.Model):
     ime = db.Column(db.String(50), nullable=False)
     prezime = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
+    treninzi = db.relationship('Trening', backref='clan', cascade="all, delete-orphan")
 
 class Trener(db.Model):
     __tablename__ = "treneri"
@@ -16,6 +17,7 @@ class Trener(db.Model):
     ime = db.Column(db.String(50), nullable=False)
     prezime = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
+    treninzi = db.relationship('Trening', backref='trener', cascade="all, delete-orphan")
 
 class Oprema(db.Model):
     __tablename__ = "oprema"
